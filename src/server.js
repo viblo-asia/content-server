@@ -20,6 +20,8 @@ app.use(function (req, res, next) {
 
 app.use(router);
 
-app.listen(process.env.PORT, () => {
-    console.log('Application launched.')
+const port = process.env.PORT || 3000
+
+app.listen(port, () => {
+    console.log(`Applciation listening on port ${port}`)
 });
