@@ -26,7 +26,7 @@ axios@^0.17.1:
     follow-redirects "^1.2.5"
     is-buffer "^1.1.5"
 
-body-parser@1.18.2, body-parser@^1.18.2:
+body-parser@1.18.2:
   version "1.18.2"
   resolved "https://registry.yarnpkg.com/body-parser/-/body-parser-1.18.2.tgz#87678a19d84b47d859b83199bd59bce222b10454"
   dependencies:
@@ -215,6 +215,10 @@ linkify-it@^2.0.0:
   dependencies:
     uc.micro "^1.0.1"
 
+lodash.omitby@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.omitby/-/lodash.omitby-4.6.0.tgz#5c15ff4754ad555016b53c041311e8f079204791"
+
 markdown-it-emoji@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/markdown-it-emoji/-/markdown-it-emoji-1.4.0.tgz#9bee0e9a990a963ba96df6980c4fddb05dfb4dcc"
@@ -390,18 +394,6 @@ vary@~1.1.2:
 "viblo-sdk@https://github.com/viblo-asia/sdk-js#2fe40e5":
   version "0.1.0"
   resolved "https://github.com/viblo-asia/sdk-js#2fe40e520f3e10031f03212e69ba821512859495"
-  dependencies:
-    axios "^0.17.1"
-    highlight.js "^9.12.0"
-    katex "^0.9.0-beta"
-    laravel-echo "^1.3.2"
-    markdown-it "^8.4.0"
-    markdown-it-emoji "^1.4.0"
-    twemoji "^2.5.0"
-
-"viblo-sdk@https://github.com/viblo-asia/sdk-js#5665e9e":
-  version "0.1.0"
-  resolved "https://github.com/viblo-asia/sdk-js#5665e9eb5571bddbfb9486ee74bf74f8d1bff68b"
   dependencies:
     axios "^0.17.1"
     highlight.js "^9.12.0"

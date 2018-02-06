@@ -1,10 +1,7 @@
 const router = require('express').Router();
-const bodyParser = require('body-parser');
 const md = require('./renderer');
 
 const { getPost } = require('viblo-sdk/api/posts');
-
-router.use(bodyParser.json());
 
 router.get('/contents/posts/:hashId', async function (req, res, next) {
     try {
@@ -17,6 +14,8 @@ router.get('/contents/posts/:hashId', async function (req, res, next) {
     } catch (e) {
         if (e.response) {
             res.status(e.response.status || 404).send();
+        } else {
+            res.status(500).send();
         }
     }
 });
