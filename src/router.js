@@ -3,7 +3,7 @@ const md = require('./renderer');
 
 const { getPost } = require('viblo-sdk/api/posts');
 
-router.get('/contents/posts/:hashId', async function (req, res, next) {
+router.get('/posts/:hashId/contents', async function (req, res, next) {
     try {
         const { data: post } = await getPost(req.params.hashId);
 
