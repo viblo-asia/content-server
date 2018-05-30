@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const md = require('./renderer');
+const md = require('../renderer');
 
 const { getPost } = require('viblo-sdk/api/posts');
 
