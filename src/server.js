@@ -1,7 +1,8 @@
 const app = require('express')();
-const router = require('./router');
+const main = require('./routes/main');
+const embed = require('./routes/embed');
 const axios = require('viblo-sdk/libs/axios').default;
-const _omitBy = require('lodash.omitby')
+const _omitBy = require('lodash.omitby');
 
 require('dotenv').config();
 
@@ -18,7 +19,8 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use(router);
+app.use(main);
+app.use(embed);
 
 const port = process.env.PORT || 3000
 
