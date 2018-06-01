@@ -8,7 +8,7 @@
     "express": "^4.16.2",
     "lodash.omitby": "^4.6.0",
     "pug": "^2.0.3",
-    "viblo-sdk": "https://github.com/viblo-asia/sdk-js#2fe40e5"
+    "viblo-sdk": "https://github.com/viblo-asia/sdk-js#026271e"
   },
   "devDependencies": {}
 }
