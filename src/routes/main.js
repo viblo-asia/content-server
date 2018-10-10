@@ -1,23 +1,22 @@
-const router = require('express').Router();
-const md = require('../renderer');
+import md from '../renderer'
+import { getPost } from 'viblo-sdk/api/posts'
+import { Router } from 'express'
 
-const { getPost } = require('viblo-sdk/api/posts');
+const router = Router()
 
-router.get('/posts/:hashId/contents', async function (req, res, next) {
+router.get('/posts/:hashId/contents', async function (req, res) {
     try {
-        const { data: post } = await getPost(req.params.hashId);
+        const { data: post } = await getPost(req.params.hashId)
+        const contents = md.render(post.contents)
 
-        return res.json({
-            ...post,
-            contents: md.render(post.contents)
-        });
+        return res.json({ ...post, contents })
     } catch (e) {
         if (e.response) {
-            res.status(e.response.status || 404).send();
+            res.status(e.response.status || 404).send()
         } else {
-            res.status(500).send();
+            res.status(500).send()
         }
     }
-});
+})
 
-module.exports = router;
+export default router
