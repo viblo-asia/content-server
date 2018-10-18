@@ -20,4 +20,4 @@ RUN apk del git
 EXPOSE 3000
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["/usr/local/bin/node", "-r", "esm", "/srv/src/server.js"]
+CMD ["/usr/local/bin/node", "-r", "esm", "/srv/src/index.js"]
