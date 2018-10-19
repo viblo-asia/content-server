@@ -9,7 +9,8 @@ const detectProvider = (url) => {
     return ({
         'gist.github.com': 'gist',
         'jsfiddle.net': 'jsfiddle',
-        'docs.google.com/presentation': 'googleslide'
+        'docs.google.com/presentation': 'googleslide',
+        'codepen.io': 'codepen'
     })[match[1]]
 }
 
