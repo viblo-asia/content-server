@@ -1,37 +1,63 @@
-import endpoints from './endpoints'
-
-const SITE_REGEX = /^http[s]?:\/\/(?:www\.)?(youtube\.com|vimeo\.com|slideshare\.net|codepen\.io)/
+import { fetchCodepen, fetchNoembed } from './endpoints'
 
 const convertIdToURL = (id, provider) => {
-    const baseURLs = {
+    const makeURL = (baseURI, path) => `${baseURI}${path}`
+    const baseURI = ({
         youtube: 'https://www.youtube.com/watch?v=',
         vimeo: 'https://vimeo.com/',
         slideshare: 'https://www.slideshare.net/slideshow/embed_code/',
-    }
-    return baseURLs[provider] ? `${baseURLs[provider]}${id}` : null
+    })[provider]
+
+    return baseURI ? makeURL(baseURI, id) : null
 }
 
 const detectProvider = (url) => {
+    const SITE_REGEX = /^http[s]?:\/\/(?:www\.)?(youtube\.com|youtu\.be|vimeo\.com|slideshare\.net|codepen\.io)/
     const match = url.match(SITE_REGEX)
-    return match ? match[1].split('.').reverse().pop() : null
+    const provider = match ? match[1].split('.').reverse().pop() : null
+    return provider === 'youtu' ? 'youtube' : provider
 }
 
 const isOembed = (url, provider) => {
-    if (provider) return !!endpoints[provider]
-    return SITE_REGEX.test(url)
-}
-
-const render = async (url, provider = null) => {
-    try {
-        const site = provider ? provider : detectProvider(url)
-        const embedURL = url.startsWith('http') ? url : convertIdToURL(url, provider)
-        const { data: { html, title } } = await endpoints[site]({ url: embedURL, format: 'json' })
-
-        return { html, title }
-    } catch (e) {
-        throw e
+    if (provider) {
+        return /(youtube|vimeo|slideshare|codepen)/.test(provider)
     }
+
+    return !!detectProvider(url)
 }
+
+
+const getOembedHTML = (url, oembedProvider) => {
+    const params = { url, format: 'json' }
+    const unsupportedByNoembed = oembedProvider === 'codepen'
+
+    if (unsupportedByNoembed) {
+        return fetchCodepen(params)
+    }
+
+    return fetchNoembed(params)
+}
+
+const render = (url, provider = null) => new Promise((resolve, reject) => {
+    try {
+        // Because of legacy embed allows id use instead of URL.
+        const isIdUsing = !url.startsWith('http')
+
+        provider = provider ? provider : detectProvider(url)
+        url = isIdUsing ? convertIdToURL(url, provider) : url
+
+        getOembedHTML(url, provider)
+            .then(({ data: { html, title } }) => {
+                if (!html) {
+                    reject(new Error('Could not found HTML in response from Oembed provider'))
+                }
+
+                resolve({ html, title })
+            })
+    } catch (e) {
+        reject(e)
+    }
+})
 
 export default {
     isOembed,
