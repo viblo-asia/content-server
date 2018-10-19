@@ -4,10 +4,11 @@ import embedly from '../libs/embedly'
 
 const router = Router()
 
-router.get('/embed/slideshare', ({ query: { url } }, res) => res.redirect(`/embed?url=${url}&provider=slideshare`))
-
-router.get('/embed', async ({ query: { url = '', provider } }, res) => {
+router.get('/embed', async ({ query: { url, provider } }, res) => {
     if (!url) return embedNotFound(res)(url)
+
+    provider = embedly.isValidProvider(provider) ? provider : undefined
+
     try {
         const { html, title } = await embedly.render(url, provider)
         return responseEmbed(res)(html, { title })
@@ -16,5 +17,7 @@ router.get('/embed', async ({ query: { url = '', provider } }, res) => {
         return embedNotFound(res)(url)
     }
 })
+
+router.get('/embed/slideshare', ({ query: { url } }, res) => res.redirect(`/embed?url=${url}&provider=slideshare`))
 
 export default router
