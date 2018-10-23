@@ -5,5 +5,5 @@ import googleslide from './googleslide'
 export default {
     gist,
     jsfiddle,
-    googleslide
+    googleslide,
 }
