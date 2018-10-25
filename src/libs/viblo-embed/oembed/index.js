@@ -38,7 +38,7 @@ const render = (url, provider = null) => new Promise((resolve, reject) => {
 
         // Support render ID:
         if (isIdUsing && provider) {
-            url = convertIdToURL(id, provider)
+            url = convertIdToURL(url, provider)
         }
 
         fetchNoembed({ url, format: 'json' })
