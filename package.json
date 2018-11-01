@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "yarn start",
-    "start": "node -r esm src/index.js"
+    "start": "node -r esm src/index.js",
+    "lint": "eslint ./src --ext .js --ignore-path .gitignore ."
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -16,5 +17,7 @@
     "pug": "^2.0.3",
     "viblo-sdk": "^0.1.0-beta.11"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^5.8.0"
+  }
 }
