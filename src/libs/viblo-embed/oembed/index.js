@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const fetchNoembed = params => axios.get('https://noembed.com/embed', { params })
+const requestNoembedHTML = params => axios.get('https://noembed.com/embed', { params })
 
 const providers = {
     'youtube': /^http[s]?:\/\/(?:www\.)?(youtube\.com|youtu\.be)/,
@@ -31,6 +31,23 @@ const isOembed = (url, provider) => {
     return validRegex.test(url)
 }
 
+const fetchNoembed = (url) => new Promise((resolve, reject) => {
+    requestNoembedHTML({ url, format: 'json' })
+        .then((response) => {
+            // Noembed always returns "200 OK".
+            const error = response.data.error
+            const embedNotFound = error && error.match(/(404)/)
+            if (!embedNotFound) {
+                return resolve(response)
+            }
+
+            return requestNoembedHTML({ url: `${url}?ver-${new Date().getTime()}` })
+                .then(resolve)
+                .catch(reject)
+        })
+        .catch(reject)
+})
+
 const render = (url, provider = null) => new Promise((resolve, reject) => {
     try {
         // Because of legacy embed allows id use instead of URL.
@@ -41,7 +58,7 @@ const render = (url, provider = null) => new Promise((resolve, reject) => {
             url = convertIdToURL(url, provider)
         }
 
-        fetchNoembed({ url, format: 'json' })
+        fetchNoembed(url)
             .then(({ data: { html, title } }) => {
                 if (!html) {
                     reject(new Error('Could not found HTML in response from Oembed provider'))

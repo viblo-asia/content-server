@@ -1,5 +1,5 @@
 import oembed from './oembed'
-import noembed from './noembed'
+import manual from './manual'
 
 const isValidProvider = (name = '') => {
     return !!name.toLowerCase().match(/(youtube|vimeo|slideshare|codepen|gist|jsfiddle|googleslide)/)
@@ -8,7 +8,7 @@ const isValidProvider = (name = '') => {
 const render = (url, provider) => Promise.resolve(
     oembed.isOembed(url, provider)
         ? oembed.render(url, provider)
-        : noembed.render(url, provider)
+        : manual.render(url, provider)
 )
 
 export default {
