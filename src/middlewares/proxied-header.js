@@ -1,4 +1,4 @@
-import _omitBy from 'lodash/omitBy'
+import _omitBy from 'lodash.omitby'
 import { default as axios } from 'viblo-sdk/libs/axios'
 
 export default ({ baseURL = '/', ignoredHeaders = [] }) => {
