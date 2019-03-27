@@ -11,6 +11,8 @@ router.get('/posts/:hashId/contents', async function (req, res) {
 
         return res.json({ ...post, contents })
     } catch (e) {
+        console.error(e)
+
         if (e.response) {
             res.status(e.response.status || 404).send()
         } else {

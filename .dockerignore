@@ -1,5 +1,5 @@
-/node_modules
-.gitignore
-.env.*
-.env
-.editorconfig
+*
+!src
+!package.json
+!yarn.lock
+!.env.*
