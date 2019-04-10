@@ -21,7 +21,7 @@ const handleError = _curry((res, e) => {
 router.get('/posts/:hashId/contents', async function ({ params }, res) {
     try {
         const { data: post } = await getPost(params.hashId)
-        const contents = md.render(post.contents)
+        const contents = md.render(post.contents || '')
 
         return res.json({ ...post, contents })
     } catch (e) {
@@ -34,8 +34,8 @@ router.get('/:commentableType/:hashId/contents/comments', async ({ params }, res
         const { comments: { data = [] }, threads } = await getComments(params.commentableType, params.hashId)
 
         const comments = _map(data, (comment) => {
-            const contents = md.render(comment.contents)
-            return { ...comment, contents }
+            const contents = md.render(comment.contents || '')
+            return { ...comment, contnets_html: contents }
         })
 
         return res.json({
