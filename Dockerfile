@@ -2,8 +2,6 @@ FROM node:8-alpine
 
 RUN apk update && apk add --no-cache git tini
 
-ARG STAGE=production
-
 ENV NODE_ENV=production
 ENV PORT=3000
 ENV TINI_VERSION v0.16.1
@@ -13,7 +11,6 @@ WORKDIR /srv
 
 
 COPY . /srv
-COPY .env.${STAGE} .env
 
 RUN yarn install --production --no-cache
 RUN apk del git
