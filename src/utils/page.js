@@ -1,4 +1,5 @@
 import { resolve } from 'path'
+import xssFilter from 'xss'
 
 export const embedNotFound = res => (url) => res.status(404).send(
     `<style>
@@ -6,7 +7,7 @@ export const embedNotFound = res => (url) => res.status(404).send(
     </style>
     <div>
         <h4>404 - Sorry, the embed could not be found!</h4>
-        <p>Embed URL: <a class="link" href="${url}" target="_blank">${url}</a></p>
+        <p>Embed URL: <a class="link" href="${xssFilter(url)}" target="_blank">${xssFilter(url)}</a></p>
     </div>`
 )
 
