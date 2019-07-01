@@ -2,7 +2,7 @@ import oembed from './oembed'
 import manual from './manual'
 
 const isValidProvider = (name = '') => {
-    return !!name.toLowerCase().match(/(youtube|vimeo|slideshare|codepen|gist|jsfiddle|googleslide)/)
+    return !!name.toLowerCase().match(/(youtube|vimeo|slideshare|codepen|gist|jsfiddle|googleslide|viblo)/)
 }
 
 const render = (url, provider) => Promise.resolve(

@@ -1,7 +1,7 @@
 import parsers from './parsers'
 import { renderEmbed } from '../utils/embed'
 
-const SITE_REGEX = /^http[s]?:\/\/(?:www\.)?(gist\.github\.com|jsfiddle\.net|docs\.google\.com\/presentation)/
+const SITE_REGEX = /^http[s]?:\/\/(?:www\.)?(gist\.github\.com|jsfiddle\.net|docs\.google\.com\/presentation|viblo\.asia)/
 
 const detectProvider = (url) => {
     const match = url.match(SITE_REGEX)
@@ -10,7 +10,8 @@ const detectProvider = (url) => {
         'gist.github.com': 'gist',
         'jsfiddle.net': 'jsfiddle',
         'docs.google.com/presentation': 'googleslide',
-        'codepen.io': 'codepen'
+        'codepen.io': 'codepen',
+        'viblo.asia': 'viblo',
     })[match[1]]
 }
 
