@@ -1,0 +1,139 @@
+doctype html
+
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="embed stats" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+    title=title || "Viblo Embed"
+    style.
+        .sidebar-box {
+            font-family: sans-serif;
+            padding-top: 1rem;
+            margin-bottom: 2rem;
+            margin-left: 20%;
+        }
+
+        .embed-user-card {
+            margin-bottom: 1rem;
+        }
+
+        .d-inline-block {
+            display: inline-block !important;
+        }
+
+        h2, h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        .embed-profile-stats {
+            padding: 1rem;
+            margin: 1rem 0;
+            border: 1px solid #D6D6D7;
+            width: 300px;
+            box-sizing: border-box;
+            font-size: 0.875rem;
+        }
+
+        .embed-profile-stats > a {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        a.link {
+            display: flex;
+            justify-content: space-between;
+            color: inherit;
+        }
+
+        a {
+            color: #5488c7;
+            text-decoration: none;
+            background-color: transparent;
+        }
+
+        .embed-profile-stats > a > p:first-child {
+            color: #9b9b9b;
+        }
+
+        .embed-profile-stats > a > p:nth-child(2) {
+            font-weight: bold;
+        }
+
+        .d-flex {
+            display: flex !important;
+        }
+
+        .d-flex div {
+            margin-right: 1rem;
+        }
+
+        .d-inline-block {
+            display: inline-block !important;
+        }
+
+        img {
+            vertical-align: middle;
+            border-style: none;
+        }
+
+        .avatar {
+            width: 60px;
+            max-height: 60px !important;
+            display: block;
+            width: 60px;
+            height: auto;
+            margin: auto;
+            cursor: pointer;
+            border-radius: 100%;
+        }
+
+        p {
+            margin-top: 0;
+        }
+
+        .text-muted {
+            color: #9b9b9b !important;
+        }
+  body
+    div(class="sidebar-box")
+        div(class="embed-user-card")
+            div(class="d-flex")
+                a(href=profile.profile_url, class="hero mr-lg-1")
+                    div(class="d-inline-block")
+                        img(src=profile.image_url, alt="Avatar", class="avatar")
+                div
+                    h2(class="user-name word-break d-inline-block")=profile.name
+                    h4(class="text-muted")='@' + profile.username
+        div(class="embed-profile-stats")
+            a(href=profile.profile_url, class="link")
+                p Total post views
+                p(title=profile.total_post_views.toLocaleString('en-IN'))=profile.formated.total_post_views
+            a(href=profile.profile_url + 'reputations', class="link")
+                p Reputations
+                p(title=profile.reputation.toLocaleString('en-IN'))=profile.formated.reputation
+            a(href=profile.profile_url + 'following-tags', class="link")
+                p Following Tags
+                p(title=profile.subscriptions_count.tags.toLocaleString('en-IN'))=profile.subscriptions_count.tags
+            a(href=profile.profile_url + 'following', class="link")
+                p Following users
+                p(title=profile.subscriptions_count.users.toLocaleString('en-IN'))=profile.subscriptions_count.users
+            a(href=profile.profile_url + 'followers', class="link")
+                p Followers
+                p(title=profile.followers_count.toLocaleString('en-IN'))=profile.formated.followers_count
+            a(href=profile.profile_url, class="link")
+                p Posts
+                p(title=profile.posts_count.toLocaleString('en-IN'))=profile.formated.posts_count
+            a(href=profile.profile_url + 'clips/posts', class="link")
+                p Clips
+                p(title=profile.subscriptions_count.posts.toLocaleString('en-IN'))=profile.subscriptions_count.posts
+            a(href=profile.profile_url + 'questions', class="link")
+                p Total questions
+                p(title=profile.questions_count.toLocaleString('en-IN'))=profile.formated.questions_count
+            a(href=profile.profile_url + 'answers', class="link")
+                p Total answers
+                p(title=profile.answers_count.toLocaleString('en-IN'))=profile.formated.answers_count
+    
+

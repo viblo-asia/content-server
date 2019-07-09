@@ -18,3 +18,11 @@ export const responseEmbed = res => (iframe, { title } = {}) => {
         return res.send(html)
     })
 }
+
+export const profileEmbed = res => (profile, { title } = {}) => {
+    const template = resolve(__dirname, '../views/profile-embed.pug')
+    return res.render(template, { title, profile }, (err, html) => {
+        if (err) throw err
+        return res.send(html)
+    })
+}
