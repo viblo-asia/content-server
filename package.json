@@ -9,7 +9,6 @@
     "lint": "eslint ./src --ext .js --ignore-path .gitignore ."
   },
   "dependencies": {
-    "add": "^2.0.6",
     "axios": "^0.18.0",
     "dotenv": "^5.0.0",
     "esm": "^3.0.84",
