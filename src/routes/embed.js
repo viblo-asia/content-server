@@ -83,7 +83,7 @@ router.get('/embed/users/:username', async function ({ params }, res) {
             }, { title })
         }
     } catch (e) {
-        return embedNotFound(res)(null)
+        return embedNotFound(res)(res.req.url)
     }
 })
 

@@ -19,6 +19,9 @@ const render = (url, provider = null) => new Promise((resolve, reject) => {
     try {
         const site = provider ? provider : detectProvider(url)
         const iframe = parsers[site](url)
+        if (!iframe) {
+            reject(new Error('Could not found HTML in response.'))
+        }
         const html = renderEmbed(iframe)
         resolve({ html })
     } catch (e) {
