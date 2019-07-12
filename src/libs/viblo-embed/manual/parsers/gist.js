@@ -1,5 +1,5 @@
 export default (str) => {
-    const regExp = /^(?:.*gist\.github\.com\/)([a-zA-Z0-9-]{0,38}\/[a-f0-9]+)$/
+    const regExp = /^(?:.*gist\.github\.com\/)([a-zA-Z0-9-]{0,38}\/[a-f0-9]+)/
     const match = str.match(regExp)
     if (!match) return
 
