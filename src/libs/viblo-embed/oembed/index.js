@@ -27,7 +27,7 @@ const isOembed = (url, provider) => {
         return !!providers[provider]
     }
 
-    const validRegex = /^http[s]?:\/\/(?:www\.)?(youtube\.com|youtu\.be|vimeo\.com|slideshare\.net|codepen\.io)/
+    const validRegex = /^http[s]?:\/\/(?:www\.)?(youtube\.com|youtu\.be|vimeo\.com|slideshare\.net|codepen\.io|soundcloud\.com)/
     return validRegex.test(url)
 }
 
