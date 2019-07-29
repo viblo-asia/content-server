@@ -6,11 +6,22 @@ html(lang="en")
     meta(name="embed stats" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
     title=title || "Viblo Embed"
     style.
+        @media all and (max-width: 300px) {
+            .sidebar-box {
+                width: 100%;
+            }
+        }
+
+        @media all and (min-width: 320px) {
+            .sidebar-box {
+                width: 320px;
+            }
+        }
+
         .sidebar-box {
             font-family: sans-serif;
             padding-top: 1rem;
             margin-bottom: 2rem;
-            margin-left: 20%;
         }
 
         .embed-user-card {
@@ -32,7 +43,6 @@ html(lang="en")
             padding: 1rem;
             margin: 1rem 0;
             border: 1px solid #D6D6D7;
-            width: 300px;
             box-sizing: border-box;
             font-size: 0.875rem;
         }
