@@ -119,7 +119,7 @@ astral-regex@^1.0.0:
   resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-1.0.0.tgz#6c8c3fb827dd43ee3918f27b82782ab7658a6fd9"
   integrity sha512-+Ryf6g3BKoRc7jfp7ad8tM4TtMiaWvbF/1/sQcZPkkS7ag3D5nMBCe2UfOTONtAkaG0tO0ij3C5Lwmf1EiyjHg==
 
-axios@^0.18.0:
+axios@^0.18.0, axios@^0.18.1:
   version "0.18.1"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.1.tgz#ff3f0de2e7b5d180e757ad98000f1081b87bcea3"
   integrity sha512-0BfJq4NSfQXd+SkFdrvFbG7addhYSBA2mQwISr46pD6E5iqkWg02RAs8vyTT/j0RTnoYmeXauBuSv1qKwR179g==
@@ -827,10 +827,10 @@ jstransformer@1.0.0:
     is-promise "^2.0.0"
     promise "^7.0.1"
 
-katex@^0.10.0:
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/katex/-/katex-0.10.1.tgz#5bb0b72bf19cecfc1fa217a9261760e5d301efff"
-  integrity sha512-iZXZ2L8pEP7HXBLAaeWkdLxnoRQ8Fdks8IuIVt01tYb+D8e0em5JYgfe6J48wXsuEr512IRCN5Kvwb9FjZH6kg==
+katex@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/katex/-/katex-0.11.1.tgz#df30ca40c565c9df01a466a00d53e079e84ffaa2"
+  integrity sha512-5oANDICCTX0NqYIyAiFCCwjQ7ERu3DQG2JFHLbYOf+fXaMoH8eg/zOq5WSYJsKMi/QebW+Eh3gSM+oss1H/bww==
   dependencies:
     commander "^2.19.0"
 
@@ -840,9 +840,10 @@ kind-of@^3.0.2:
   dependencies:
     is-buffer "^1.1.5"
 
-laravel-echo@^1.4.0:
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/laravel-echo/-/laravel-echo-1.4.1.tgz#61ac9f7f38dafb8a581bd626fd0d74987e9ce2e2"
+laravel-echo@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/laravel-echo/-/laravel-echo-1.6.1.tgz#7360a48782f606acd0e6cf6fd429905b59606ae6"
+  integrity sha512-Nj+vg6IwnXh65Oe+HrIrjOFX5xwR1ln9YgdxPWzuYNOuvT4ZimhkmIe5jb7D3muBPVRUoOY9W4c6YgJ4L0L6+Q==
 
 lazy-cache@^1.0.3:
   version "1.0.4"
@@ -1488,14 +1489,14 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
 
-viblo-sdk@^0.1.0-beta.19:
-  version "0.1.0-beta.19"
-  resolved "https://registry.yarnpkg.com/viblo-sdk/-/viblo-sdk-0.1.0-beta.19.tgz#476bd697aa4ce929e122abbd0c1e895956017111"
-  integrity sha512-Hkih/yt8RDJk9rOYtD6Pi6OLb1qPk7caYQjve4HvbQnwRRIOxVz2cEkhn/Z8gR3qolqKJPaIN5C+ZNxM5mv4LQ==
+viblo-sdk@^0.1.0-beta.22:
+  version "0.1.0-beta.22"
+  resolved "https://registry.yarnpkg.com/viblo-sdk/-/viblo-sdk-0.1.0-beta.22.tgz#1acc6fedcb15bb1a8152e5b6ea6b70df1cfe6e66"
+  integrity sha512-VrIgl0ItdIgyd6YiT8x5LhEgn7H/QtcKDkkZI4kOmRTCL6cY/P+U7GrqXRvQEUTKWzzNTPhmyzPStkfzy8YaWA==
   dependencies:
-    axios "^0.18.0"
-    katex "^0.10.0"
-    laravel-echo "^1.4.0"
+    axios "^0.18.1"
+    katex "^0.11.1"
+    laravel-echo "^1.6.1"
     markdown-it "^8.4.2"
     markdown-it-emoji "^1.4.0"
     markdown-it-sanitizer "https://github.com/huukimit/markdown-it-sanitizer#33dd3f7"
