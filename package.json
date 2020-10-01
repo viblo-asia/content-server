@@ -9,16 +9,16 @@
     "lint": "eslint ./src --ext .js --ignore-path .gitignore ."
   },
   "dependencies": {
-    "axios": "^0.18.0",
-    "dotenv": "^5.0.0",
-    "esm": "^3.0.84",
-    "express": "^4.16.2",
-    "lodash": "^4.17.13",
-    "pug": "^2.0.3",
-    "viblo-sdk": "^0.1.0-beta.22",
-    "xss": "^1.0.6"
+    "axios": "^0.20.0",
+    "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "pug": "^3.0.0",
+    "viblo-sdk": "^0.1.0-beta.23",
+    "xss": "^1.0.8"
   },
   "devDependencies": {
-    "eslint": "^5.8.0"
+    "eslint": "^7.10.0"
   }
 }
