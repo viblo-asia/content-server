@@ -6,9 +6,11 @@ import { API_URL } from './env'
 
 const app = express()
 
+app.disable('x-powered-by')
+
 app.use(proxiedHeader({
     baseURL: API_URL,
-    ignoredHeaders: ['host', 'accept']
+    ignoredHeaders: ['host', 'accept', 'accept-encoding']
 }))
 
 app.use(main)
