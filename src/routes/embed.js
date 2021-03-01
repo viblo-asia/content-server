@@ -40,11 +40,11 @@ const getFormatedNumber = (profile) => {
             'total_post_views', 'questions_count', 'answers_count', 'reputation', 'followers_count', 'posts_count',
         ])
         var formatters = {}
-     
+
         _forEach(data, (value, key) => {
             formatters[key] = formatNumber(value)
         })
-    
+
         return formatters
     } catch (error) {
         console.log(error)
