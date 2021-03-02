@@ -31,6 +31,10 @@ const isOembed = (url, provider) => {
     return validRegex.test(url)
 }
 
+const isCodepenEmbed = (url) => {
+    return providers.codepen.test(url)
+}
+
 const fetchNoembed = (url) => new Promise((resolve, reject) => {
     requestNoembedHTML({ url, format: 'json' })
         .then((response) => {
@@ -73,5 +77,6 @@ const render = (url, provider = null) => new Promise((resolve, reject) => {
 
 export default {
     isOembed,
+    isCodepenEmbed,
     render
 }
