@@ -1,5 +1,5 @@
 export default (url) => {
-    const regex = /^https?:\/\/codepen.io\/([a-zA-Z0-9]+)\/(pen|embed\/preview|embed)\/([a-zA-Z0-9]+)(.*)$/
+    const regex = /^https?:\/\/codepen.io\/([a-zA-Z0-9-_]+)\/(pen|embed\/preview|embed)\/([a-zA-Z0-9]+)(.*)$/
     const matches = url.match(regex)
 
     if (!matches) return
