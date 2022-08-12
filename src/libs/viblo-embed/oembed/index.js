@@ -1,6 +1,13 @@
 import axios from 'axios'
 
-const requestNoembedHTML = params => axios.get('https://noembed.com/embed', { params })
+const requestNoembedHTML = (provider, params) => {
+    const isYoutubeProvider = isYoutubeEmbed(params.url)
+    if (provider === 'youtube' || isYoutubeProvider) {
+        return axios.get('https://youtube.com/oembed', { params })
+    } else {
+        return axios.get('https://noembed.com/embed', { params })
+    }
+}
 
 const providers = {
     'youtube': /^http[s]?:\/\/(?:www\.)?(youtube\.com|youtu\.be)/,
@@ -35,8 +42,12 @@ const isCodepenEmbed = (url) => {
     return providers.codepen.test(url)
 }
 
-const fetchNoembed = (url) => new Promise((resolve, reject) => {
-    requestNoembedHTML({ url, format: 'json' })
+const isYoutubeEmbed = (url) => {
+    return providers.youtube.test(url)
+}
+
+const fetchNoembed = (provider, url) => new Promise((resolve, reject) => {
+    requestNoembedHTML(provider, { url, format: 'json' })
         .then((response) => {
             // Noembed always returns "200 OK".
             const error = response.data.error
@@ -45,7 +56,7 @@ const fetchNoembed = (url) => new Promise((resolve, reject) => {
                 return resolve(response)
             }
 
-            return requestNoembedHTML({ url: `${url}?ver-${new Date().getTime()}` })
+            return requestNoembedHTML(provider, { url: `${url}?ver-${new Date().getTime()}` })
                 .then(resolve)
                 .catch(reject)
         })
@@ -62,7 +73,7 @@ const render = (url, provider = null) => new Promise((resolve, reject) => {
             url = convertIdToURL(url, provider)
         }
 
-        fetchNoembed(url)
+        fetchNoembed(provider, url)
             .then(({ data: { html, title } }) => {
                 if (!html) {
                     reject(new Error('Could not found HTML in response from Oembed provider'))
